@@ -59,7 +59,7 @@ changeColor();
 
 function saveSVG(){
 var content = document.getElementById("QGIS").outerHTML;
-uriContent = "data:text/svg," + encodeURIComponent(content);
+uriContent = "data:text/plain," + encodeURIComponent(content);
 newWindow = window.open(uriContent, 'neuesDokument');
 }
 </script>
@@ -257,8 +257,8 @@ newWindow = window.open(uriContent, 'neuesDokument');
      d="m 65.071984,63.235 87.999996,86 0,-21.05469 -38.38281,-37.945312 -9.10352,-8.999998 -18.207026,-18 z" />
 </svg>
 <br><br>
-<input type="button" onClick="saveSVG()" value="Download"><br><br>
-<small>Rename downloaded file "your_name.svg"</small>
+<input type="button" onClick="saveSVG()" value="Generate"><br><br>
+<small>Save generated page as: "your_name.svg"</small>
 
 </body>
 </html>
