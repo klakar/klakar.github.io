@@ -59,7 +59,7 @@ changeColor();
 
 function saveSVG(){
 var content = document.getElementById("QGIS").outerHTML;
-uriContent = "data:text/plain," + encodeURIComponent(content);
+uriContent = "data:image/svg," + encodeURIComponent(content);
 newWindow = window.open(uriContent, 'neuesDokument');
 }
 </script>
@@ -101,7 +101,7 @@ newWindow = window.open(uriContent, 'neuesDokument');
    id="Layer_1"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="qgis-swe-simple.svg"><sodipodi:namedview
+   sodipodi:docname="qgis-custom-logo.svg"><sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1"
@@ -258,7 +258,7 @@ newWindow = window.open(uriContent, 'neuesDokument');
 </svg>
 <br><br>
 <input type="button" onClick="saveSVG()" value="Generate"><br><br>
-<small>Save generated page as: "your_name.svg"</small><br>
+<small>Save or rename generated file as: "your_name.svg"</small><br>
 <small>Works best in Firefox, the Open Source web browser.</small>
 
 </body>
