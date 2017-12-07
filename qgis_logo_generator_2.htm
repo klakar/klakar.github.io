@@ -223,7 +223,8 @@ h1 {
 </svg>
 <br><br>
 
-1st Color (Background): <input type="color" id="base_color" value="#ffffff" class="color_picker"><br>
+1st Color (Background): <input type="color" id="base_color" value="#ffffff" class="color_picker">
+<span class="textpress" id="remove_color0">Hide</span><br>
 <hr>
 
 2nd Color: <input type="color" id="color1" value="#ffffff" class="color_picker"> 
@@ -253,8 +254,12 @@ Option: <input type="radio" name="option2" id="opt2_none" value="None" checked>N
 // Base color function
 var base_color = document.getElementById("base_color");
 var base_poly = document.getElementById("bas");
+var remove0 = document.getElementById("remove_color0");
 base_color.onchange = function() {
   base_poly.style.fill = this.value;
+}
+remove0.onclick = function() {
+  base_poly.style.fill = "none";
 }
 
 // 1st additional field functions
