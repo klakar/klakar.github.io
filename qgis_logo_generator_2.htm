@@ -39,6 +39,9 @@ hr {
 	color: #654BA2;
 	text-decoration: underline;
 }
+.slider {
+	width: 200pt;
+}
 </style>
 
 </head>
@@ -235,7 +238,7 @@ hr {
 <span class="textpress" id="remove_color1">Hide</span><br>
 Width: <input type="range" min="1" max="100" value="20" class="slider" id="color1_width"><br>
 Position: <input type="range" min="1" max="100" value="50" class="slider" id="position1"><br>
-Rotate: <input type="range" min="0" max="180" value="0" class="slider" id="rotate1"><br>
+Rotate: <input type="range" min="0" max="180" value="0" class="slider" id="rotate1">*<br>
 Option: <input type="radio" name="option1" id="opt1_none" value="None" checked>None
 <input name="option1" id="opt1_90" type="radio" value="90deg">Perpendicular
 <input name="option1" id="opt1_mirror" type="radio" value="mirror">Mirror
@@ -246,7 +249,7 @@ Option: <input type="radio" name="option1" id="opt1_none" value="None" checked>N
 <span class="textpress" id="remove_color2">Hide</span><br>
 Width: <input type="range" min="1" max="100" value="20" class="slider" id="color2_width"><br>
 Position: <input type="range" min="1" max="100" value="50" class="slider" id="position2"><br>
-Rotate: <input type="range" min="0" max="180" value="0" class="slider" id="rotate2"><br>
+Rotate: <input type="range" min="0" max="180" value="0" class="slider" id="rotate2">*<br>
 Option: <input type="radio" name="option2" id="opt2_none" value="None" checked>None
 <input name="option2" id="opt2_90" type="radio" value="90deg">Perpendicular
 <input name="option2" id="opt2_mirror" type="radio" value="mirror">Mirror
@@ -425,7 +428,8 @@ newWindow = window.open(uriContent);
 <small>Save or rename generated file as: "your_name.svg"</small><br>
 <small>Works best in Firefox, the Open Source web browser.</small><br>
 <small>MS Edge can right click and save image as...</small><br><br>
-
+<small>*) Jumping between rotate and position may lead<br>
+to unexpected behaviour.</small><br>
 
 <h3>STILL A WORK IN PROGRESS</h3>
 
