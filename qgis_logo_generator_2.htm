@@ -234,6 +234,7 @@ Rotate: <input type="range" min="0" max="180" value="0" class="slider" id="rotat
 Option: <input type="radio" name="option1" id="opt1_none" value="None" checked>None
 <input name="option1" id="opt1_90" type="radio" value="90deg">Perpendicular
 <input name="option1" id="opt1_mirror" type="radio" value="mirror">Mirror
+<input name="option1" id="opt1_split" type="radio" value="split">Split
 <hr>
 
 3rd Color: <input type="color" id="color2" value="#ffffff" class="color_picker">
@@ -244,6 +245,7 @@ Rotate: <input type="range" min="0" max="180" value="0" class="slider" id="rotat
 Option: <input type="radio" name="option2" id="opt2_none" value="None" checked>None
 <input name="option2" id="opt2_90" type="radio" value="90deg">Perpendicular
 <input name="option2" id="opt2_mirror" type="radio" value="mirror">Mirror
+<input name="option2" id="opt2_split" type="radio" value="split">Split
 <hr>
 
 <script>
@@ -260,60 +262,71 @@ var center1 = 50;
 var color1 = document.getElementById("color1");
 var field1a = document.getElementById("field_one_a");
 var field1b = document.getElementById("field_one_b");
-color1.onchange = function() {
-  field1a.style.fill = this.value;
-  field1b.style.fill = this.value;
-}
-
-var remove1 = document.getElementById("remove_color1");
-remove1.onclick = function() {
-  field1a.style.fill = "none";
-  field1b.style.fill = "none"; 
-}
-
-var width1 = document.getElementById("color1_width");
-width1.oninput = function() {
-  field1a.setAttribute("height", this.value); // I know this may be confusing...
-  field1b.setAttribute("height", this.value);
-  field1a.setAttribute("y", center1 - (this.value)/2);
-  field1b.setAttribute("y", center1 - (this.value)/2);
-}
-
-var position1 = document.getElementById("position1");
-position1.oninput = function() {
-  center1 = this.value;
-  field1a.setAttribute("y", center1 - (width1.value)/2);
-  field1b.setAttribute("y", center1 - (width1.value)/2);
-}
-
 var opt1_none = document.getElementById("opt1_none");
+var opt1_90 = document.getElementById("opt1_90");
+var opt1_mirror = document.getElementById("opt1_mirror");
+var opt1_split = document.getElementById("opt1_split");
+var remove1 = document.getElementById("remove_color1");
+var width1 = document.getElementById("color1_width");
+var position1 = document.getElementById("position1");
+var rotate1 = document.getElementById("rotate1");
+
 opt1_none.onclick = function() {
   if (this.checked) {
     field1b.setAttribute("transform", "rotate(" + rotate1.value + " 50 " + center1 + ")");
   }
 }
-
-var opt1_90 = document.getElementById("opt1_90");
 opt1_90.onclick = function() {
   if (this.checked) {
     field1b.setAttribute("transform", "rotate(" + (rotate1.value - 90) + " 50 " + center1 + ")");
   }
 }
-
-var opt1_mirror = document.getElementById("opt1_mirror");
 opt1_mirror.onclick = function() {
   if (this.checked) {
     field1b.setAttribute("transform", "rotate(-" + rotate1.value + " 50 " + center1 + ")");
   }
 }
+opt1_split.onclick = function() {
+  if (this.checked) {
+    field1b.setAttribute("y", (100 - center1) - (width1.value)/2);
+  }
+}
 
-var rotate1 = document.getElementById("rotate1");
+color1.onchange = function() {
+  field1a.style.fill = this.value;
+  field1b.style.fill = this.value;
+}
+
+remove1.onclick = function() {
+  field1a.style.fill = "none";
+  field1b.style.fill = "none"; 
+}
+
+width1.oninput = function() {
+  field1a.setAttribute("height", this.value); // I know this may be confusing...
+  field1b.setAttribute("height", this.value);
+  var position_a = center1 - (this.value/2);
+  var position_b = position_a;
+  if (opt1_split.checked) { position_b = (100 - center1) - (this.value/2)};
+  field1a.setAttribute("y", position_a);
+  field1b.setAttribute("y", position_b);
+}
+
+position1.oninput = function() {
+  center1 = this.value;
+  var position_a = center1 - (width1.value/2);
+  var position_b = position_a;
+  if (opt1_split.checked) { position_b = 100 - center1 - (width1.value/2) };
+  field1a.setAttribute("y", position_a);
+  field1b.setAttribute("y", position_b);
+}
+
 rotate1.oninput = function() {
   var fieldb = this.value;
   //field1a.setAttribute("transform", "rotate(" + this.value + " " + center1 + " 50)");
   field1a.setAttribute("transform", "rotate(" + this.value + " 50 " + center1 + ")");
-  if (opt1_90.checked) { fieldb = this.value - 90};
-  if (opt1_mirror.checked) { fieldb = - this.value} 
+  if (opt1_90.checked) { fieldb = this.value - 90 }
+  if (opt1_mirror.checked) { fieldb = - this.value }
   field1b.setAttribute("transform", "rotate(" + fieldb + " 50 " + center1 + ")");
 }
 
@@ -322,55 +335,67 @@ var center2 = 50;
 var color2 = document.getElementById("color2");
 var field2a = document.getElementById("field_two_a");
 var field2b = document.getElementById("field_two_b");
+var remove2 = document.getElementById("remove_color2");
+var width2 = document.getElementById("color2_width");
+var position2 = document.getElementById("position2");
+var opt2_none = document.getElementById("opt2_none");
+var opt2_90 = document.getElementById("opt2_90");
+var opt2_mirror = document.getElementById("opt2_mirror");
+var rotate2 = document.getElementById("rotate2");
+
 color2.onchange = function() {
   field2a.style.fill = this.value;
   field2b.style.fill = this.value;
 }
 
 
-var remove2 = document.getElementById("remove_color2");
 remove2.onclick = function() {
   field2a.style.fill = "none";
   field2b.style.fill = "none"; 
 }
 
-var width2 = document.getElementById("color2_width");
 width2.oninput = function() {
   field2a.setAttribute("height", this.value); // I know this may be confusing...
   field2b.setAttribute("height", this.value);
-  field2a.setAttribute("y", center2 - (this.value)/2);
-  field2b.setAttribute("y", center2 - (this.value)/2);
+  var position_a = center2 - (this.value/2);
+  var position_b = position_a;
+  if (opt2_split.checked) { position_b = (100 - center2) - (this.value/2)};
+  field2a.setAttribute("y", position_a);
+  field2b.setAttribute("y", position_b);
 }
 
-var position2 = document.getElementById("position2");
 position2.oninput = function() {
   center2 = this.value;
-  field2a.setAttribute("y", center2 - (width2.value)/2);
-  field2b.setAttribute("y", center2 - (width2.value)/2);
+  var position_a = center2 - (width2.value/2);
+  var position_b = position_a;
+  if (opt2_split.checked) { position_b = 100 - center2 - (width2.value/2) };
+  field2a.setAttribute("y", position_a);
+  field2b.setAttribute("y", position_b);
 }
 
-var opt2_none = document.getElementById("opt2_none");
 opt2_none.onclick = function() {
   if (this.checked) {
     field2b.setAttribute("transform", "rotate(" + rotate2.value + " 50 " + center2 + ")");
   }
 }
 
-var opt2_90 = document.getElementById("opt2_90");
 opt2_90.onclick = function() {
   if (this.checked) {
     field2b.setAttribute("transform", "rotate(" + (rotate2.value - 90) + " 50 " + center2 + ")");
   }
 }
 
-var opt2_mirror = document.getElementById("opt2_mirror");
 opt2_mirror.onclick = function() {
   if (this.checked) {
     field2b.setAttribute("transform", "rotate(-" + rotate2.value + " 50 " + center2 + " )");
   }
 }
+opt2_split.onclick = function() {
+  if (this.checked) {
+    field2b.setAttribute("y", (100 - center2) - (width2.value)/2);
+  }
+}
 
-var rotate2 = document.getElementById("rotate2");
 rotate2.oninput = function() {
   var fieldb = this.value;
   field2a.setAttribute("transform", "rotate(" + this.value + " 50 " + center2 + ")");
