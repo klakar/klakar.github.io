@@ -247,7 +247,7 @@ Option: <input type="radio" name="option1" id="opt1_none" value="None" checked>N
 
 3rd Color: <input type="color" id="color2" value="#ffffff" class="color_picker">
 <span class="textpress" id="remove_color2">Hide</span><br>
-Width: <input type="range" min="1" max="100" value="20" class="slider" id="color2_width"><br>
+Width: <input type="range" min="1" max="100" value="10" class="slider" id="color2_width"><br>
 Position: <input type="range" min="1" max="100" value="50" class="slider" id="position2"><br>
 Rotate: <input type="range" min="0" max="180" value="0" class="slider" id="rotate2">*<br>
 Option: <input type="radio" name="option2" id="opt2_none" value="None" checked>None
@@ -358,6 +358,32 @@ var opt2_90 = document.getElementById("opt2_90");
 var opt2_mirror = document.getElementById("opt2_mirror");
 var rotate2 = document.getElementById("rotate2");
 
+opt2_none.onclick = function() {
+  if (this.checked) {
+    field2b.setAttribute("transform", "rotate(" + rotate2.value + " 50 " + center2 + ")");
+    field2b.setAttribute("y", center2 - (width2.value)/2);
+  }
+}
+
+opt2_90.onclick = function() {
+  if (this.checked) {
+    field2b.setAttribute("transform", "rotate(" + (rotate2.value - 90) + " 50 " + center2 + ")");
+    field2b.setAttribute("y", center2 - (width2.value)/2);
+  }
+}
+
+opt2_mirror.onclick = function() {
+  if (this.checked) {
+    field2b.setAttribute("transform", "rotate(-" + rotate2.value + " 50 " + center2 + " )");
+    field2b.setAttribute("y", center2 - (width2.value)/2);
+  }
+}
+opt2_split.onclick = function() {
+  if (this.checked) {
+    field2b.setAttribute("y", (100 - center2) - (width2.value)/2);
+  }
+}
+
 color2.onchange = function() {
   field2a.style.fill = this.value;
   field2b.style.fill = this.value;
@@ -388,32 +414,6 @@ position2.oninput = function() {
   field2b.setAttribute("y", position_b);
 }
 
-opt2_none.onclick = function() {
-  if (this.checked) {
-    field2b.setAttribute("transform", "rotate(" + rotate2.value + " 50 " + center2 + ")");
-    field2b.setAttribute("y", center2 - (width2.value)/2);
-  }
-}
-
-opt2_90.onclick = function() {
-  if (this.checked) {
-    field2b.setAttribute("transform", "rotate(" + (rotate2.value - 90) + " 50 " + center2 + ")");
-    field2b.setAttribute("y", center2 - (width2.value)/2);
-  }
-}
-
-opt2_mirror.onclick = function() {
-  if (this.checked) {
-    field2b.setAttribute("transform", "rotate(-" + rotate2.value + " 50 " + center2 + " )");
-    field2b.setAttribute("y", center2 - (width2.value)/2);
-  }
-}
-opt2_split.onclick = function() {
-  if (this.checked) {
-    field2b.setAttribute("y", (100 - center2) - (width2.value)/2);
-  }
-}
-
 rotate2.oninput = function() {
   var fieldb = this.value;
   field2a.setAttribute("transform", "rotate(" + this.value + " 50 " + center2 + ")");
@@ -422,6 +422,7 @@ rotate2.oninput = function() {
   field2b.setAttribute("transform", "rotate(" + fieldb + " 50 " + center2 + ")");
 }
 
+// Save the SVG separately
 function saveSVG(){
 var content = document.getElementById("QGIS").outerHTML;
 uriContent = "data:image/svg," + encodeURIComponent(content);
