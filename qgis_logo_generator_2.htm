@@ -286,16 +286,19 @@ var rotate1 = document.getElementById("rotate1");
 opt1_none.onclick = function() {
   if (this.checked) {
     field1b.setAttribute("transform", "rotate(" + rotate1.value + " 50 " + center1 + ")");
+    field1b.setAttribute("y", center1 - (width1.value)/2);
   }
 }
 opt1_90.onclick = function() {
   if (this.checked) {
     field1b.setAttribute("transform", "rotate(" + (rotate1.value - 90) + " 50 " + center1 + ")");
+    field1b.setAttribute("y", center1 - (width1.value)/2);
   }
 }
 opt1_mirror.onclick = function() {
   if (this.checked) {
     field1b.setAttribute("transform", "rotate(-" + rotate1.value + " 50 " + center1 + ")");
+    field1b.setAttribute("y", center1 - (width1.value)/2);
   }
 }
 opt1_split.onclick = function() {
@@ -388,18 +391,21 @@ position2.oninput = function() {
 opt2_none.onclick = function() {
   if (this.checked) {
     field2b.setAttribute("transform", "rotate(" + rotate2.value + " 50 " + center2 + ")");
+    field2b.setAttribute("y", center2 - (width2.value)/2);
   }
 }
 
 opt2_90.onclick = function() {
   if (this.checked) {
     field2b.setAttribute("transform", "rotate(" + (rotate2.value - 90) + " 50 " + center2 + ")");
+    field2b.setAttribute("y", center2 - (width2.value)/2);
   }
 }
 
 opt2_mirror.onclick = function() {
   if (this.checked) {
     field2b.setAttribute("transform", "rotate(-" + rotate2.value + " 50 " + center2 + " )");
+    field2b.setAttribute("y", center2 - (width2.value)/2);
   }
 }
 opt2_split.onclick = function() {
