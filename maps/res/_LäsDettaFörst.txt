@@ -1,0 +1,8 @@
+Om du behöver redigera i sidorna så bör du börja med index.js!!!
+
+Ändringar i övriga filer kan lätt leda till att kartan slutar fungera.
+
+Om du ändrar på platser du inte borde så kan kartan också sluta fungera.
+
+Se därför till att ta en kopia på alla filer du vill redigera, så att
+det enklare går att återställa kartan om det blir problem.

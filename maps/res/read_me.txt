@@ -1,0 +1,3 @@
+If you want to edit the files, you should start with index.js
+
+This will have the least chance of screwing things up...

@@ -1,0 +1,54 @@
+
+.fill {
+	min-height: 100%;
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+.ol-zoom {
+	top: 55px;
+}
+
+.ol-full-screen {
+	top: 115px;
+	left: 7px;
+	right: auto;
+}
+
+.ol-mouse-position{
+	top:55px;
+	right:8px;
+	background-color: rgba(255,255,255,.8);
+	padding: 5px;
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+	border-radius: 7px;
+}
+
+.ol-rotate {
+	top:150px;
+	left: 7px;
+	right: auto;
+}
+
+.popup{
+	background:white;
+	width:260px;
+	height:135px;
+	border-radius:10px;
+	border-top-left-radius:0px;
+	padding: 5px;
+	border-style: solid;
+	border-width: 1px;
+}
+
+#map {
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+	display: block;
+}
+
+html, body {
+	height: 100%;
+}	
