@@ -24,3 +24,7 @@ Nedanstående bilder är endast utgångsläge för diskussioner och skall inte s
 ![](Plats3_bild4.png)
 ![](Plats3_bild5.png)
 ![](Plats3_bild6.png)
+![](SvartSten_7m_flaggstång.png)
+![](SvartSten_7m_flaggstång_2.png)
+![](SvartSten_7m_flaggstång_3.png)
+![](SvartSten_7m_flaggstång_4.png)
